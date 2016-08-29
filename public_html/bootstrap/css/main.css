@@ -1,0 +1,35 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.container {
+    /*background-color: #ddd;*/
+}
+
+.padding-top-10{
+    padding-top: 10px;
+    max-width: 600px;
+}
+
+.monStyle{
+    background-color: silver;
+    min-height: 300px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
