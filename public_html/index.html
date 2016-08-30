@@ -16,9 +16,72 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script>
 
-            function verifierNombre(id) {
+            //function generale pour calculer le total
+            function btnCalculer() {
+                var adults = verifierSiNombre(document.getElementById('nombreAdults'));
+                var enfants = verifierSiNombre(document.getElementById('nombreEnfants'));
+                var chambres = verifierSiNombre(document.getElementById('nombreChambres'));
+                if (adults !== 0 && enfants !== 0 && chambres != 0) {
+                    calculerTotal(adults + enfants + chambres);
+                }
+                verifierCourriel();
 
             }
+
+            function verifierSiNombre(objet) {
+
+                if (objet.value.match(/^[0-9]+$/) !== null) {
+                    objet.setAttribute("class", "form-control");
+                    return parseInt(objet.value);
+                } else {
+                    objet.value = "";
+                    objet.setAttribute("class", "form-control courrielInvalide");
+                    document.getElementById("total").value = 0;
+                    return 0;
+                }
+
+            }
+
+
+            function getTotal() {
+                if (document.getElementById("total").value == "") {
+                    total = 0;
+                } else {
+                    total = parseInt(document.getElementById("total").value);
+                }
+                return total;
+            }
+            //=================================================
+
+            function calculerTotal(total) {
+                if (verifierCourriel()) {
+                    document.getElementById("total").value = total;
+                } else {
+                    document.getElementById("total").value = 0;
+                }
+            }
+            //=================================================
+            //verification si champ courriel est bien remplis
+            function verifierCourriel() {
+
+                if (validerCourriel(document.getElementById("courriel").value)) {
+                    document.getElementById("courriel").setAttribute("class", "form-control");
+                    return true;
+                } else {
+                    document.getElementById("courriel").value = "";
+                    //document.getElementById("total").value = "";
+                    document.getElementById("courriel").setAttribute("class", "form-control courrielInvalide");
+                    return false;
+                }
+            }
+
+            //validation courriel
+            function validerCourriel(str) {
+                var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                return pattern.test(str);  // returns a boolean 
+            }
+
+
         </script>
 
     </head>
@@ -38,22 +101,26 @@
                 <div class="form-group">
                     <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre d'adults</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
-                        <input class="form-control" placeholder="0" type="number" id="nombreAdults" onchange="verifierNombre(this)"/>
+                        <input class="form-control" placeholder="0" type="text" id="nombreAdults"/>
                     </div>
+                    <span class="help-block" id="helpNombreAdults"></span>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre d'enfants (moins de 12 ans)</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
-                        <input class="form-control" placeholder="0" type="number" id="nbEnfants"/>
+                        <input class="form-control" placeholder="0" type="text" id="nombreEnfants" 
+                               oninvalid="this.setCustomValidity('svp entrer un nombre')" />
                     </div>
+                    <span class="help-block" id="helpNombreEnfants"></span>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre de chambres à réserver:</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
-                        <input class="form-control" placeholder="0" type="number" id="nbChambres"/>
+                        <input class="form-control" placeholder="0" type="text" id="nombreChambres"/>
                     </div>
+                    <span class="help-block" id="helpNombreChambres"></span>
                 </div>
 
                 <div class="form-group">
@@ -131,22 +198,37 @@
                 <div class="form-group">
                     <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Courriel:</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
-                        <input class="form-control" type="email" placeholder="Entrez votre courriel ici">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-envelope"></span>
+
+                            </span>
+                            <input class="form-control" type="email" id="courriel" placeholder="Entrez votre courriel ici"
+                                   onchange="verifierCourriel()">
+                        </div>
                     </div>
+
+
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Le coût total de voyage:</label>
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Le coût total du voyage:</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
-                        <input class="form-control" type="text" placeholder="0.00">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input readonly class="form-control" type="text" value="0" placeholder="0.00" id="total" >
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" onclick="btnCalculer()">Calculer</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10 col-md-offset-4 col-sm-offset-4">
-                        <div>
-                            <button class="btn btn-default btn-block" id="btnCalculer">
-                                <span class="glyphicon glyphicon-credit-card"></span> Calculer
+                        <div >
+                            <button class="btn btn-default btn-block" id="btnEnvoyer">
+                                <span class="glyphicon glyphicon-credit-card"></span> Envoyer
                             </button>
                         </div>
                     </div>

@@ -28,6 +28,10 @@ img{
     height: 10px;
 }
 
+.courrielInvalide{
+    border-color: red;
+}
+
 
 
 
