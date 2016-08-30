@@ -14,127 +14,147 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script>
+
+            function verifierNombre(id) {
+
+            }
+        </script>
 
     </head>
     <body>
 
-        <div class="panel panel-default">
-            <div class="panel-body">
 
+        <div class="container bg-success">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">  
+                    </label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                        <h4 class="h4 text-success">Estimation de coût</h4>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre d'adults</label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                        <input class="form-control" placeholder="0" type="number" id="nombreAdults" onchange="verifierNombre(this)"/>
+                    </div>
+                </div>
 
-            </div>
-            <div class="panel-footer">
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre d'enfants (moins de 12 ans)</label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                        <input class="form-control" placeholder="0" type="number" id="nbEnfants"/>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre de chambres à réserver:</label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                        <input class="form-control" placeholder="0" type="number" id="nbChambres"/>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Durée du voyage:</label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                        <select class="form-control" name="listeDureeVoyage">
+                            <option>1 semaine</option>
+                            <option>2 semaine</option>
+                            <option>3 semaine</option>
+                            <option>4 semaine</option>
+                        </select>
+                    </div>
+                </div>
 
-            </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Choix de la catégorie d'hôtel:</label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="groupeRadio" value="5" checked="checked" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="groupeRadio" value="4"  />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="groupeRadio" value="3"  />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                                <img class="stars" src="imgages/star_gold_256.png" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Extras:</label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="1" id="chboxVoiture"/>location de voiture 
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="2" id="chboxPremierClasse"/>voyage en 1<sup>er</sup> classe
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="3" id="chboxGolf"/>terraine de golf
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="4" id="chboxCuisinette"/>cuisinette
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Courriel:</label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                        <input class="form-control" type="email" placeholder="Entrez votre courriel ici">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Le coût total de voyage:</label>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                        <input class="form-control" type="text" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10 col-md-offset-4 col-sm-offset-4">
+                        <div>
+                            <button class="btn btn-default btn-block" id="btnCalculer">
+                                <span class="glyphicon glyphicon-credit-card"></span> Calculer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
 
 
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre adults</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-                    <input class="form-control" placeholder="user login" type="text" id="idNombreAdults"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre enfants</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-                    <input class="form-control" placeholder="user login" type="text" id="idNbEnfants"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre de chambres à réserver:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-                    <input class="form-control" placeholder="user login" type="text" id="idNbEnfants"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Durée de voyage:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-                    <select class="form-control" name="radioDureeVoyage">
-                        <option>1 semaine</option>
-                        <option>2 semaine</option>
-                        <option>3 semaine</option>
-                        <option>4 semaine</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Choix de la catégorie d'hôtel:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-                    <div >
-                        <input type="radio" name="groupeRadio" value="5" checked="checked" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                    </div>
-                    <div>
-                        <input type="radio" name="groupeRadio" value="4" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                    </div>
-                    <div>
-                        <input type="radio" name="groupeRadio" value="3" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                        <img class="stars" src="imgages/star_gold_256.png" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Extras:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-                    <div>
-                        <input type="checkbox" name="locationVoyage" value="ON" /> location voyage 
-                    </div>
-                    <div>
-                        <input type="checkbox" name="voyagePremierClass" value="ON" /> voyage en 1<sup>er</sup> classe
-                    </div>
-                    <div>
-                        <input type="checkbox" name="terraineDeGolfe" value="ON" /> terraine de golf
-                    </div>
-                    <div>
-                        <input type="checkbox" name="cuisinette" value="ON" /> cuisinette
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Courriel:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-                    <input class="form-control" type="email" placeholder="Entrez votre courriel ici">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Le coût total de voyage:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10">
-                    <input class="form-control" type="text" placeholder="0.00">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-10 col-md-offset-4 col-sm-offset-4">
-                    <div>
-                        <button class="btn btn-default btn-block">
-                            <span class="glyphicon glyphicon-credit-card"></span> Calculer
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
 
 
     </body>
