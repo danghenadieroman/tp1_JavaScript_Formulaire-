@@ -26,7 +26,7 @@
                 var enfants = verifierSiNombre(document.getElementById('nombreEnfants'));
                 var chambres = verifierSiNombre(document.getElementById('nombreChambres'));
                 if (adults !== 0 && enfants !== 0 && chambres !== 0) {
-                    calculerTotal((adults + enfants + chambres) * semaine * hotel + extras);
+                    calculerTotal(extras + ((adults + enfants + chambres) + hotel) * semaine );
                 }
                 verifierCourriel();
             }
@@ -142,7 +142,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre d'adults</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
-                        <input class="form-control" placeholder="0" type="text" id="nombreAdults"/>
+                        <input class="form-control" placeholder="0" type="text" id="nombreAdults" onchange="btnCalculer()"/>
                     </div>
                     <span class="help-block" id="helpNombreAdults"></span>
                 </div>
@@ -167,7 +167,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Durée du voyage:</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
-                        <select class="form-control" name="listeDureeVoyage" id="selectSemaine">
+                        <select class="form-control" name="listeDureeVoyage" id="selectSemaine" onchange="btnCalculer()">
                             <option>1 semaine</option>
                             <option>2 semaine</option>
                             <option>3 semaine</option>
@@ -179,7 +179,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Choix de la catégorie d'hôtel:</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
-                        <div class="radio">
+                        <div class="radio" onchange="btnCalculer()">
                             <label>
                                 <input type="radio" name="groupeRadio" value="200" checked="checked" />
                                 <img class="stars" src="imgages/star_gold_256.png" />
@@ -189,7 +189,7 @@
                                 <img class="stars" src="imgages/star_gold_256.png" />
                             </label>
                         </div>
-                        <div class="radio">
+                        <div class="radio" onchange="btnCalculer()">
                             <label>
                                 <input type="radio" name="groupeRadio" value="150"  />
                                 <img class="stars" src="imgages/star_gold_256.png" />
@@ -198,7 +198,7 @@
                                 <img class="stars" src="imgages/star_gold_256.png" />
                             </label>
                         </div>
-                        <div class="radio">
+                        <div class="radio" onchange="btnCalculer()">
                             <label>
                                 <input type="radio" name="groupeRadio" value="100"  />
                                 <img class="stars" src="imgages/star_gold_256.png" />
@@ -213,24 +213,24 @@
                     <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Extras:</label>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10">
 
-                        <div class="checkbox">
+                        <div class="checkbox" >
                             <label>
-                                <input type="checkbox" name="extras" value="50" id="chboxVoiture"/>location de voiture 
+                                <input type="checkbox" name="extras" value="50" id="chboxVoiture" onclick="btnCalculer()"/>location de voiture 
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="extras" value="1000" id="chboxPremierClasse"/>voyage en 1<sup>er</sup> classe
+                                <input type="checkbox" name="extras" value="1000" id="chboxPremierClasse" onclick="btnCalculer()"/>voyage en 1<sup>er</sup> classe
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="extras" value="200" id="chboxGolf"/>terraine de golf
+                                <input type="checkbox" name="extras" value="200" id="chboxGolf" onclick="btnCalculer()"/>terraine de golf
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="extras" value="100" id="chboxCuisinette"/>cuisinette
+                                <input type="checkbox" name="extras" value="100" id="chboxCuisinette" onclick="btnCalculer()"/>cuisinette
                             </label>
                         </div>
                     </div>
@@ -269,7 +269,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-10 col-md-offset-4 col-sm-offset-4">
                         <div >
                             <button class="btn btn-default btn-block" id="btnEnvoyer">
-                                <span class="glyphicon glyphicon-credit-card"></span> Effacer
+                                <span class="glyphicon glyphicon-remove"></span> Effacer
                             </button>
                         </div>
                     </div>
